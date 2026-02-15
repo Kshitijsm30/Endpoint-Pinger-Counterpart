@@ -3,6 +3,7 @@ const path = require('path');
 const http = require('http');
 const https = require('https');
 const { URL } = require('url');
+const express = require('express');
 
 function readEnv() {
 	const envPath = path.join(__dirname, '..', '.env');
@@ -67,9 +68,18 @@ function scheduleNext() {
 	}, delay);
 }
 
-(function main() {
+// Start an Express server so Render (or other hosts) detect an open port.
+const app = express();
+app.get('/', (req, res) => res.send('OK'));
+
+const port = env.PORT || process.env.PORT || 3000;
+app.listen(port, () => {
+	console.log(new Date().toISOString(), `Server listening on port ${port}`);
 	console.log('Loaded URL:', pingUrl);
+	// start pings after server is listening
 	ping(pingUrl);
 	scheduleNext();
-})();
+});
+
+module.exports = app;
 
