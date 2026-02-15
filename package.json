@@ -1,20 +1,25 @@
 {
-  "name": "endpoint-pinger-counter",
+  "name": "endpoint-pinger",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://https://github.com/Kshitijsm30/Endpoint-Pinger-Counterpart.git"
+    "url": "git+https://github.com/DanishSayyad/Endpoint-Pinger.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "DanishSayyad",
   "license": "ISC",
-  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DanishSayyad/Endpoint-Pinger/issues"
+  },
+  "homepage": "https://github.com/DanishSayyad/Endpoint-Pinger#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.3.1",
     "express": "^5.2.1"
   }
 }
