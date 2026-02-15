@@ -25,7 +25,8 @@ function readEnv() {
 	return env;
 }
 
-const env = readEnv();
+const fileEnv = readEnv();
+const env = Object.assign({}, fileEnv, process.env);
 const pingUrl = env.PING_URL || env.URL || env.ENDPOINT || Object.values(env).find(v => /^https?:\/\//i.test(v));
 if (!pingUrl) {
 	console.error('No URL found in .env. Set PING_URL or URL to a valid http(s) URL.');
